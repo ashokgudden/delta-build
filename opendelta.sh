@@ -17,14 +17,14 @@ fi
 
 # ------ CONFIGURATION ------
 
-DELTAHOME=/root/delta-build
+DELTAHOME=/home/ashoksoni/delta-build
 
 BIN_JAVA=java
 BIN_MINSIGNAPK=$DELTAHOME/delta/minsignapk.jar
 BIN_XDELTA=$DELTAHOME/delta/xdelta3
 BIN_ZIPADJUST=$DELTAHOME/delta/zipadjust
 
-FILE_MATCH=cm-*.zip
+FILE_MATCH=RR-*.zip
 PATH_CURRENT=$DELTAHOME/latestbuild/$DEVICE
 PATH_LAST=$DELTAHOME/lastbuild/$DEVICE
 
@@ -90,8 +90,8 @@ mkdir out
 
 $BIN_ZIPADJUST --decompress $PATH_CURRENT/$FILE_CURRENT work/current.zip
 $BIN_ZIPADJUST --decompress $PATH_LAST/$FILE_LAST work/last.zip
-$BIN_JAVA -Xmx1024m -jar $BIN_MINSIGNAPK $KEY_X509 $KEY_PK8 work/current.zip work/current_signed.zip
-$BIN_JAVA -Xmx1024m -jar $BIN_MINSIGNAPK $KEY_X509 $KEY_PK8 work/last.zip work/last_signed.zip
+$BIN_JAVA -Xmx4024m -jar $BIN_MINSIGNAPK $KEY_X509 $KEY_PK8 work/current.zip work/current_signed.zip
+$BIN_JAVA -Xmx4024m -jar $BIN_MINSIGNAPK $KEY_X509 $KEY_PK8 work/last.zip work/last_signed.zip
 SRC_BUFF=$(nextPowerOf2 $(getFileSize work/current.zip));
 $BIN_XDELTA -B ${SRC_BUFF} -9evfS none -s work/last.zip work/current.zip out/$FILE_LAST_BASE.update
 SRC_BUFF=$(nextPowerOf2 $(getFileSize work/current_signed.zip));
