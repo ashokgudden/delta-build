@@ -24,7 +24,7 @@ BIN_MINSIGNAPK=$DELTAHOME/delta/minsignapk.jar
 BIN_XDELTA=$DELTAHOME/delta/xdelta3
 BIN_ZIPADJUST=$DELTAHOME/delta/zipadjust
 
-FILE_MATCH=RR-*.zip
+FILE_MATCH=Delight-*.zip
 PATH_CURRENT=$DELTAHOME/latestbuild/$DEVICE
 PATH_LAST=$DELTAHOME/lastbuild/$DEVICE
 
